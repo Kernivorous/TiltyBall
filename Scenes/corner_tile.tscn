@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=4 uid="uid://c8jd8k1p6r5vm"]
+
+[ext_resource type="Texture2D" uid="uid://6fmvwix54omu" path="res://Assets/Poliigon_WoodVeneerOak_7760/4K/Poliigon_WoodVeneerOak_7760_BaseColor.jpg" id="1_qpry8"]
+[ext_resource type="Texture2D" uid="uid://bl738ngee7hee" path="res://Assets/Poliigon_WoodVeneerOak_7760/4K/Poliigon_WoodVeneerOak_7760_Normal.png" id="2_dpo6v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8k6qk"]
+albedo_texture = ExtResource("1_qpry8")
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("2_dpo6v")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_6nbqj"]
+_surfaces = [{
+"aabb": AABB(-5, -1, -5, 10, 2, 10),
+"format": 34896613377,
+"index_count": 72,
+"index_data": PackedByteArray("AAADAAEAAAACAAMAAgAHAAMAAgAGAAcABgAFAAcABgAEAAUABAABAAUABAAAAAEAAgAEAAYAAgAAAAQABwABAAMABwAFAAEACAALAAkACAAKAAsACgAPAAsACgAOAA8ADgANAA8ADgAMAA0ADAAJAA0ADAAIAAkACgAMAA4ACgAIAAwADwAJAAsADwANAAkA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("ZeYAAP//AABl5v////8AAAAAAAD//wAAAAD/////AABl5gAAZeYAAGXm//9l5gAAAAAAAGXmAAAAAP//ZeYAAGXmAAD//wAAZeb/////AABl5gAAAAAAAGXm//8AAAAA//8AAP//AAD///////8AAP//AAAAAAAA/////wAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_iryk6"]
+resource_name = "Corner_Tile_Cube_002"
+_surfaces = [{
+"aabb": AABB(-5, -1, -5, 10, 2, 10),
+"attribute_data": PackedByteArray("/1////8f/z//XwAA/5/////f/z//nwAA/1//v/8f/3//X/+//5//v//f/3//n/+//1//P/9f/z//X/8//5//P/+f/z//n/8//1//f/9f/3//X/9//5//f/+f/3//n/9//18AAP8f/z//X////58AAP/f/z//n////1//v/8f/3//X/+//5//v//f/3//n/+//1//P/9f/z//X/8//5//P/+f/z//n/8//1//f/9f/3//X/9//5//f/+f/3//n/9/"),
+"format": 34896613399,
+"index_count": 72,
+"index_data": PackedByteArray("AAAJAAMAAAAGAAkACAAXAAsACAAUABcAEgAPABUAEgAMAA8ADgAFABEADgACAAUABwANABMABwABAA0AFgAEAAoAFgAQAAQAGgAjAB0AGgAgACMAHgAtACEAHgAqAC0ALAApAC8ALAAmACkAJAAbACcAJAAYABsAHwAlACsAHwAZACUALgAcACIALgAoABwA"),
+"material": SubResource("StandardMaterial3D_8k6qk"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray("ZeYAAP///79l5gAA//9U1WXmAAD//1TVZeb//////79l5v////9U1WXm/////1TVAAAAAP///78AAAAA//9U1QAAAAD//1TVAAD//////78AAP////9U1QAA/////1TVZeYAAGXm//9l5gAAZeZU1WXmAABl5lTVZeb//2Xm//9l5v//ZeZU1WXm//9l5lTVAAAAAGXm//8AAAAAZeZU1QAAAABl5lTVAAD//2Xm//8AAP//ZeZU1QAA//9l5lTVZeYAAP///79l5gAA////v2XmAAD//1TVZeb//////79l5v///////2Xm/////1TVZeYAAAAA//9l5gAAAAD/v2XmAAAAAFTVZeb//wAA//9l5v//AAD//2Xm//8AAFTV//8AAP///7///wAA////v///AAD//1TV/////////7///////////////////1TV//8AAAAA/////wAAAAD/v///AAAAAFTV/////wAA////////AAD///////8AAFTV/////1RVVFWqKqoq/////6qqqqqqKqoq/////1RVVFVU1VTV/////6qqqqpU1VTV/7//v1RVVFWqKqoq/7//v6qqqqqqKqoq/7//v1RVVFVU1VTV/7//v6qqqqpU1VTV/////wAA/39U1VTV//////9//79U1VTV/7//vwAA/39U1VTV/7//v/9//79U1VTV/////wAA/3+qKqoq//////9//7+qKqoq/7//vwAA/3+qKqoq/7//v/9//7+qKqoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_6nbqj")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4eing"]
+data = PackedVector3Array(4, -1, 5, -5, 1, 5, 4, 1, 5, 4, -1, 5, -5, -1, 5, -5, 1, 5, -5, -1, 5, -5, 1, 4, -5, 1, 5, -5, -1, 5, -5, -1, 4, -5, 1, 4, -5, -1, 4, 4, 1, 4, -5, 1, 4, -5, -1, 4, 4, -1, 4, 4, 1, 4, 4, -1, 4, 4, 1, 5, 4, 1, 4, 4, -1, 4, 4, -1, 5, 4, 1, 5, -5, -1, 5, 4, -1, 4, -5, -1, 4, -5, -1, 5, 4, -1, 5, 4, -1, 4, -5, 1, 4, 4, 1, 5, -5, 1, 5, -5, 1, 4, 4, 1, 4, 4, 1, 5, 4, -1, 5, 4, 1, -5, 4, 1, 5, 4, -1, 5, 4, -1, -5, 4, 1, -5, 4, -1, -5, 5, 1, -5, 4, 1, -5, 4, -1, -5, 5, -1, -5, 5, 1, -5, 5, -1, -5, 5, 1, 5, 5, 1, -5, 5, -1, -5, 5, -1, 5, 5, 1, 5, 5, -1, 5, 4, 1, 5, 5, 1, 5, 5, -1, 5, 4, -1, 5, 4, 1, 5, 4, -1, -5, 5, -1, 5, 5, -1, -5, 4, -1, -5, 4, -1, 5, 5, -1, 5, 5, 1, -5, 4, 1, 5, 4, 1, -5, 5, 1, -5, 5, 1, 5, 4, 1, 5)
+
+[node name="Corner_Tile " type="MeshInstance3D"]
+mesh = SubResource("ArrayMesh_iryk6")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4eing")

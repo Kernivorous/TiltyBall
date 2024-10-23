@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://cg7ig8ogo8buh"]
+
+[ext_resource type="MeshLibrary" uid="uid://dtug0w2prjb4" path="res://mesh_library.tres" id="1_p0031"]
+[ext_resource type="PackedScene" uid="uid://b4hhr0bwoirrc" path="res://Scenes/hole_tile.tscn" id="2_asbur"]
+[ext_resource type="Script" path="res://Scripts/level.gd" id="2_jwnxd"]
+[ext_resource type="PackedScene" uid="uid://cve67ycj1qnor" path="res://Scenes/wall_tile.tscn" id="3_qieln"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_73tlg"]
+friction = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8u3cc"]
+size = Vector3(60, 1, 60)
+
+[node name="GridMap" type="GridMap" node_paths=PackedStringArray("goal", "player_start")]
+mesh_library = ExtResource("1_p0031")
+cell_size = Vector3(10, 2, 10)
+data = {
+"cells": PackedInt32Array(65535, 65533, 0, 0, 65533, 0, 1, 65533, 0, 65533, 65533, 0, 65533, 65534, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, 2, 65533, 0, 2, 65534, 0, 2, 65535, 0, 1, 65535, 0, 0, 65535, 0, 65534, 2, 0, 65535, 2, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 2, 1, 0, 2, 0, 0, 1, 0, 0, 65534, 0, 0, 65534, 1, 0, 0, 1, 0, 1, 1, 0, 1, 65534, 0, 0, 65534, 0, 65535, 65534, 0, 65534, 65534, 0, 65535, 1, 0, 65535, 0, 0, 0, 0, 0, 65533, 2, 0, 65533, 1, 0, 65533, 0, 0)
+}
+script = ExtResource("2_jwnxd")
+goal = NodePath("Hole_Tile ")
+player_start = NodePath("PlayerStart")
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Wall_Tile " parent="Walls" instance=ExtResource("3_qieln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 6, 25, 2.51599, 0)
+
+[node name="Wall_Tile 5" parent="Walls" instance=ExtResource("3_qieln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.99039, 15, 2.51599, 0)
+
+[node name="Wall_Tile 9" parent="Walls" instance=ExtResource("3_qieln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.91489, 3.25, 2.516, -10.2077)
+
+[node name="Wall_Tile 10" parent="Walls" instance=ExtResource("3_qieln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -14.5, 2.516, -14.25)
+
+[node name="Wall_Tile 11" parent="Walls" instance=ExtResource("3_qieln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -25, 2.516, -14.25)
+
+[node name="Wall_Tile 6" parent="Walls" instance=ExtResource("3_qieln")]
+transform = Transform3D(-4.37114e-08, 0, 4, 0, 1, 0, -1, 0, -1.74846e-07, 1.04907e-06, 2.51599, 24)
+
+[node name="Wall_Tile 7" parent="Walls" instance=ExtResource("3_qieln")]
+transform = Transform3D(-4.37114e-08, 0, 2.85, 0, 1, 0, -1, 0, -1.24577e-07, -6, 2.516, 14)
+
+[node name="Wall_Tile 8" parent="Walls" instance=ExtResource("3_qieln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.1, -25, 2.516, 14.5)
+
+[node name="Wall_Tile 2" parent="Walls" instance=ExtResource("3_qieln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 6, -34, 2.51599, 0)
+
+[node name="Wall_Tile 3" parent="Walls" instance=ExtResource("3_qieln")]
+transform = Transform3D(-4.37114e-08, 0, -6, 0, 1, 0, 1, 0, -2.62268e-07, -1.09278e-06, 2.51599, 25)
+
+[node name="Wall_Tile 4" parent="Walls" instance=ExtResource("3_qieln")]
+transform = Transform3D(-4.37114e-08, 0, -6, 0, 1, 0, 1, 0, -2.62268e-07, 1.48619e-06, 2.51599, -34)
+
+[node name="Hole_Tile " parent="." instance=ExtResource("2_asbur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 1, -25)
+
+[node name="PlayerStart" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.75, 2.75, 14.75)
+
+[node name="Ceiling" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75, 0)
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_73tlg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling"]
+shape = SubResource("BoxShape3D_8u3cc")

@@ -1,0 +1,106 @@
+[gd_scene load_steps=12 format=3 uid="uid://b6v30wiil2r5i"]
+
+[ext_resource type="PackedScene" uid="uid://uylm2y6b8vay" path="res://Scenes/ball.tscn" id="1_b37pn"]
+[ext_resource type="Script" path="res://Scripts/gridmap_controller.gd" id="2_0bvne"]
+[ext_resource type="Script" path="res://Scripts/grid_map_holder.gd" id="2_83d3g"]
+[ext_resource type="Texture2D" uid="uid://b0j5uxbnlo5d6" path="res://Assets/kloppenheim_06_puresky_4k.hdr" id="4_chkxj"]
+[ext_resource type="Script" path="res://Scripts/death_box.gd" id="5_qy67b"]
+[ext_resource type="AudioStream" uid="uid://5j2umr3fnmij" path="res://Cosy Synth.mp3" id="6_skww6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bj5xw"]
+metallic = 1.0
+roughness = 0.0
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xwcko"]
+panorama = ExtResource("4_chkxj")
+
+[sub_resource type="Sky" id="Sky_jufdl"]
+sky_material = SubResource("PanoramaSkyMaterial_xwcko")
+
+[sub_resource type="Environment" id="Environment_atytt"]
+background_mode = 2
+background_energy_multiplier = 0.8
+sky = SubResource("Sky_jufdl")
+ambient_light_source = 3
+reflected_light_source = 2
+ssr_fade_in = 1.11964
+ssao_enabled = true
+ssao_radius = 1.63
+ssao_intensity = 4.0
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_energy = 0.9
+fog_enabled = true
+fog_light_color = Color(0.2793, 0.4731, 0.57, 1)
+fog_light_energy = 5.32
+fog_density = 0.001
+fog_aerial_perspective = 0.774
+fog_depth_curve = 2.2974
+fog_depth_begin = 0.0
+fog_depth_end = 0.0
+volumetric_fog_density = 1.0
+volumetric_fog_temporal_reprojection_enabled = false
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_odcwk"]
+size = Vector3(100, 5, 100)
+
+[node name="World" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707106, 0, -0.707106, 0.707106, 0, 60, 48.085)
+fov = 70.0
+size = 83.365
+near = 0.003
+far = 574.1
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.937282, 0.267022, 0.224058, 0, -0.642787, 0.766044, 0.348572, 0.718, 0.602473, 0, 23.479, 0)
+light_energy = 1.646
+shadow_enabled = true
+directional_shadow_blend_splits = true
+directional_shadow_fade_start = 0.5
+directional_shadow_pancake_size = 1.6
+
+[node name="Ball" parent="." instance=ExtResource("1_b37pn")]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -85.9855, 0)
+visible = false
+size = Vector3(50, 100, 50)
+material = SubResource("StandardMaterial3D_bj5xw")
+
+[node name="GridMapHolder" type="Node3D" parent="." node_paths=PackedStringArray("gridmap_controller", "ball")]
+script = ExtResource("2_83d3g")
+gridmap_controller = NodePath("GridMapController")
+ball = NodePath("../Ball")
+
+[node name="GridMapController" type="Node3D" parent="GridMapHolder"]
+script = ExtResource("2_0bvne")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_atytt")
+
+[node name="KillBox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -45.8469, 0)
+collision_mask = 2
+script = ExtResource("5_qy67b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillBox"]
+shape = SubResource("BoxShape3D_odcwk")
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.98665, 0)
+update_mode = 1
+size = Vector3(100, 46.8538, 100)
+enable_shadows = true
+cull_mask = 1048573
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_skww6")
+attenuation_model = 3
+volume_db = -5.527
+unit_size = 100.0
+max_db = 5.0
+autoplay = true
+
+[connection signal="body_entered" from="KillBox" to="KillBox" method="_on_body_entered"]

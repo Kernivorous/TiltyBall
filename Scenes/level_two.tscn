@@ -1,0 +1,104 @@
+[gd_scene load_steps=8 format=3 uid="uid://bowdrgjtnnmba"]
+
+[ext_resource type="MeshLibrary" uid="uid://dtug0w2prjb4" path="res://mesh_library.tres" id="1_50kio"]
+[ext_resource type="Script" path="res://Scripts/level.gd" id="2_hfh1d"]
+[ext_resource type="PackedScene" uid="uid://b4hhr0bwoirrc" path="res://Scenes/hole_tile.tscn" id="2_t3a35"]
+[ext_resource type="PackedScene" uid="uid://bpt4yh46v4xmo" path="res://Scenes/spike_pit.tscn" id="4_d7vly"]
+[ext_resource type="PackedScene" uid="uid://cve67ycj1qnor" path="res://Scenes/wall_tile.tscn" id="5_qfoag"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u8fd8"]
+friction = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_13uta"]
+size = Vector3(60, 1, 60)
+
+[node name="GridMap" type="GridMap" node_paths=PackedStringArray("goal", "player_start")]
+mesh_library = ExtResource("1_50kio")
+cell_size = Vector3(10, 2, 10)
+data = {
+"cells": PackedInt32Array(65533, 65534, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 0, 65533, 0, 1, 65533, 0, 2, 65534, 0, 2, 65535, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0, 1, 2, 0, 0, 2, 0, 65535, 2, 0, 65534, 2, 0, 65533, 2, 0, 65533, 1, 0, 65534, 0, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 65535, 0, 0, 1, 0, 0, 0, 65535, 0, 65534, 65535, 0, 65534, 65534, 0, 65535, 65534, 0, 0, 65534, 0, 1, 65534, 0, 65533, 0, 655360, 65533, 65535, 655360)
+}
+script = ExtResource("2_hfh1d")
+goal = NodePath("Hole_Tile ")
+player_start = NodePath("PlayerStart")
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="Hole_Tile " parent="." instance=ExtResource("2_t3a35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -5)
+
+[node name="PlayerStart" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, 25)
+
+[node name="Spike Pit " parent="." instance=ExtResource("4_d7vly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, -5)
+
+[node name="Spike Pit 2" parent="." instance=ExtResource("4_d7vly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, -25)
+
+[node name="Walls" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="Wall_Tile " parent="Walls" instance=ExtResource("5_qfoag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 6, 25, 5, 0)
+
+[node name="Wall_Tile 2" parent="Walls" instance=ExtResource("5_qfoag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 6, -34, 5, 0)
+
+[node name="Wall_Tile 3" parent="Walls" instance=ExtResource("5_qfoag")]
+transform = Transform3D(-4.37114e-08, 0, -6, 0, 1, 0, 1, 0, -2.62268e-07, -1.09278e-06, 5, 25)
+
+[node name="Wall_Tile 17" parent="Walls" instance=ExtResource("5_qfoag")]
+transform = Transform3D(-4.37114e-08, 0, -2, 0, 1, 0, 1, 0, -8.74228e-08, 1, 5, 16)
+
+[node name="Wall_Tile 18" parent="Walls" instance=ExtResource("5_qfoag")]
+transform = Transform3D(-4.37114e-08, 0, -2, 0, 1, 0, 1, 0, -8.74228e-08, 0, 5, 5)
+
+[node name="Wall_Tile 19" parent="Walls" instance=ExtResource("5_qfoag")]
+transform = Transform3D(-4.37114e-08, 0, -3, 0, 1, 0, 1, 0, -1.31134e-07, -4, 5, -4)
+
+[node name="Wall_Tile 4" parent="Walls" instance=ExtResource("5_qfoag")]
+transform = Transform3D(-4.37114e-08, 0, -6, 0, 1, 0, 1, 0, -2.62268e-07, 1.48619e-06, 5, -34)
+
+[node name="Wall_Tile 5" parent="Walls" instance=ExtResource("5_qfoag")]
+transform = Transform3D(-4.37114e-08, 0, -2.88, 0, 1, 0, 1, 0, -1.25889e-07, 14.4, 5, -24)
+
+[node name="Wall_Tile 6" parent="Walls" instance=ExtResource("5_qfoag")]
+transform = Transform3D(-4.37114e-08, 0, -0.999927, 0, 1, 0, 1, 0, -4.37082e-08, 15.002, 5, -14)
+
+[node name="Wall_Tile 7" parent="Walls" instance=ExtResource("5_qfoag")]
+transform = Transform3D(-4.37114e-08, 0, -0.999927, 0, 1, 0, 1, 0, -4.37082e-08, -14.9958, 5, -24)
+
+[node name="Wall_Tile 8" parent="Walls" instance=ExtResource("5_qfoag")]
+transform = Transform3D(-4.37114e-08, 0, -0.999927, 0, 1, 0, 1, 0, -4.37082e-08, 24.0013, 5, 16)
+
+[node name="Wall_Tile 9" parent="Walls" instance=ExtResource("5_qfoag")]
+transform = Transform3D(-1, 0, 8.74164e-08, 0, 1, 0, -8.74228e-08, 0, -0.999927, -4.99671, 5, 24.9993)
+
+[node name="Wall_Tile 10" parent="Walls" instance=ExtResource("5_qfoag")]
+transform = Transform3D(-1, 0, 8.74164e-08, 0, 1, 0, -8.74228e-08, 0, -0.999927, -14.9967, 5, 24.9993)
+
+[node name="Wall_Tile 11" parent="Walls" instance=ExtResource("5_qfoag")]
+transform = Transform3D(-1, 0, 4.52987e-07, 0, 1, 0, -1.50996e-07, 0, -3, -15, 5, -5)
+
+[node name="Wall_Tile 12" parent="Walls" instance=ExtResource("5_qfoag")]
+transform = Transform3D(-1, 0, 3.01992e-07, 0, 1, 0, -1.50996e-07, 0, -2, -6, 5, -9)
+
+[node name="Wall_Tile 13" parent="Walls" instance=ExtResource("5_qfoag")]
+transform = Transform3D(-1, 0, 3.01992e-07, 0, 1, 0, -1.50996e-07, 0, -2, 5, 5, -9)
+
+[node name="Wall_Tile 14" parent="Walls" instance=ExtResource("5_qfoag")]
+transform = Transform3D(-1, 0, 4.52987e-07, 0, 1, 0, -1.50996e-07, 0, -3, 24, 5, 5)
+
+[node name="Wall_Tile 15" parent="Walls" instance=ExtResource("5_qfoag")]
+transform = Transform3D(-1, 0, 1.66095e-07, 0, 1, 0, -1.50996e-07, 0, -1.1, 15, 5, 14.5)
+
+[node name="Wall_Tile 16" parent="Walls" instance=ExtResource("5_qfoag")]
+transform = Transform3D(-1, 0, 1.66095e-07, 0, 1, 0, -1.50996e-07, 0, -1.1, 15, 5, -4.5)
+
+[node name="Ceiling" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75, 0)
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_u8fd8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling"]
+shape = SubResource("BoxShape3D_13uta")

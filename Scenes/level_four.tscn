@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://b36p6f6jryagh"]
+
+[ext_resource type="MeshLibrary" uid="uid://dtug0w2prjb4" path="res://mesh_library.tres" id="1_tqofk"]
+[ext_resource type="Script" path="res://Scripts/level.gd" id="2_3askk"]
+[ext_resource type="PackedScene" uid="uid://b4hhr0bwoirrc" path="res://Scenes/hole_tile.tscn" id="3_7r0k1"]
+[ext_resource type="PackedScene" uid="uid://bpt4yh46v4xmo" path="res://Scenes/spike_pit.tscn" id="4_uluca"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fdp1u"]
+friction = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yokjl"]
+size = Vector3(60, 1, 60)
+
+[node name="GridMap" type="GridMap" node_paths=PackedStringArray("goal", "player_start")]
+mesh_library = ExtResource("1_tqofk")
+cell_size = Vector3(10, 2, 10)
+data = {
+"cells": PackedInt32Array(65533, 65535, 0, 65533, 65534, 0, 65534, 65533, 0, 65535, 65533, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 2, 65534, 0, 2, 65535, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0, 0, 2, 0, 65535, 2, 0, 65533, 2, 0, 65533, 0, 0, 65534, 1, 0, 65535, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 65535, 0, 0, 65535, 65535, 0, 0, 65534, 0, 65535, 65534, 0, 65534, 65534, 0, 65538, 2, 3, 131069, 2, 1441795, 131069, 65533, 655363, 65538, 65533, 1048579, 131069, 1, 655362, 131069, 0, 655362, 131069, 65535, 655362, 131069, 65534, 655362, 131070, 65533, 1048578, 131071, 65533, 1048578, 65536, 65533, 1048578, 65537, 65533, 1048578, 65537, 2, 1441794, 65536, 2, 1441794, 131071, 2, 1441794, 65538, 1, 1048580, 65537, 0, 1, 65537, 65535, 655363, 131071, 65534, 1048578, 131070, 65534, 655361, 131070, 2, 1441795, 131071, 1, 3, 131071, 0, 655363, 65536, 0, 1441794, 65536, 65535, 1048578, 131071, 65535, 2, 1, 65535, 0, 65534, 65535, 5, 65534, 0, 5)
+}
+script = ExtResource("2_3askk")
+goal = NodePath("Hole_Tile ")
+player_start = NodePath("PlayerStart")
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="PlayerStart" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 3, 15.25)
+
+[node name="Hole_Tile " parent="." instance=ExtResource("3_7r0k1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -5)
+
+[node name="Spike Pit " parent="." instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 1, 25)
+
+[node name="Spike Pit 2" parent="." instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, 25)
+
+[node name="Spike Pit 3" parent="." instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 15)
+
+[node name="Spike Pit 4" parent="." instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, -15)
+
+[node name="Spike Pit 5" parent="." instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1, -24)
+
+[node name="Spike Pit 6" parent="." instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1, 15)
+
+[node name="Ceiling" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75, 0)
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_fdp1u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling"]
+shape = SubResource("BoxShape3D_yokjl")

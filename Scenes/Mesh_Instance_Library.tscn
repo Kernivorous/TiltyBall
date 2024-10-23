@@ -1,0 +1,22 @@
+[gd_scene load_steps=7 format=3 uid="uid://xqdbkftn55kh"]
+
+[ext_resource type="PackedScene" uid="uid://ojxjv81o6l2n" path="res://Scenes/floor_tile.tscn" id="1_20p58"]
+[ext_resource type="PackedScene" uid="uid://0wmikuyj4it6" path="res://Scenes/double_wall_tile.tscn" id="1_q46sr"]
+[ext_resource type="PackedScene" uid="uid://c8jd8k1p6r5vm" path="res://Scenes/corner_tile.tscn" id="2_8e7mb"]
+[ext_resource type="PackedScene" uid="uid://cve67ycj1qnor" path="res://Scenes/wall_tile.tscn" id="3_vhq4c"]
+[ext_resource type="PackedScene" uid="uid://64ipfwysroy2" path="res://Scenes/triple_wall_tile.tscn" id="5_gren2"]
+[ext_resource type="PackedScene" uid="uid://dw0uwh5fck88v" path="res://Scenes/plank.tscn" id="6_nik18"]
+
+[node name="Scene_Root" type="Node3D"]
+
+[node name="Floor_Tile " parent="." instance=ExtResource("1_20p58")]
+
+[node name="Double_Wall_Tile " parent="." instance=ExtResource("1_q46sr")]
+
+[node name="Wall_Tile " parent="." instance=ExtResource("3_vhq4c")]
+
+[node name="Corner_Tile " parent="." instance=ExtResource("2_8e7mb")]
+
+[node name="Triple_Wall_Tile " parent="." instance=ExtResource("5_gren2")]
+
+[node name="Plank " parent="." instance=ExtResource("6_nik18")]
