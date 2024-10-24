@@ -8,6 +8,7 @@ var active : bool = true
 
 @onready var hit_audio = $AudioStreamPlayer3D
 
+
 func reset_velocity() -> void:
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO

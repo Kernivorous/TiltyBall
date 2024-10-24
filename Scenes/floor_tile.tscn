@@ -8,7 +8,6 @@ albedo_texture = ExtResource("1_85dj7")
 roughness = 0.75
 normal_enabled = true
 normal_texture = ExtResource("2_n024v")
-uv1_scale = Vector3(10, 10, 10)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_iven5"]
 _surfaces = [{

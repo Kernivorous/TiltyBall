@@ -26,7 +26,8 @@ func update_floor(delta):
 	mouse_rotation.z = clamp(mouse_rotation.z, -ROTATION_LIMIT, ROTATION_LIMIT)
 	
 	floor_rotation = Vector3(-mouse_rotation.x, 0, mouse_rotation.z)
-	global_transform.basis = Basis.from_euler(floor_rotation)	
+	#global_transform.basis = Basis.from_euler(floor_rotation)	
+	rotation = floor_rotation
 	
 	rotation_input = 0.0
 	tilt_input = 0.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://c1bm858setm4x"]
+[gd_scene load_steps=9 format=4 uid="uid://c1bm858setm4x"]
 
 [ext_resource type="Texture2D" uid="uid://6fmvwix54omu" path="res://Assets/Poliigon_WoodVeneerOak_7760/4K/Poliigon_WoodVeneerOak_7760_BaseColor.jpg" id="1_etrp5"]
 [ext_resource type="Texture2D" uid="uid://bl738ngee7hee" path="res://Assets/Poliigon_WoodVeneerOak_7760/4K/Poliigon_WoodVeneerOak_7760_Normal.png" id="2_dy41g"]
@@ -40,17 +40,21 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_iven5")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_b7aoj"]
-data = PackedVector3Array(-5, -1, 5, -5, 1, -5, -5, 1, 5, -5, -1, 5, -5, -1, -5, -5, 1, -5, -5, -1, -5, 5, 1, -5, -5, 1, -5, -5, -1, -5, 5, -1, -5, 5, 1, -5, 5, -1, -5, 5, 1, 5, 5, 1, -5, 5, -1, -5, 5, -1, 5, 5, 1, 5, 5, -1, 5, -5, 1, 5, 5, 1, 5, 5, -1, 5, -5, -1, 5, -5, 1, 5, -5, -1, -5, 5, -1, 5, 5, -1, -5, -5, -1, -5, -5, -1, 5, 5, -1, 5, 5, 1, -5, -5, 1, 5, -5, 1, -5, 5, 1, -5, 5, 1, 5, -5, 1, 5)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uabl7"]
+rough = true
 
-[node name="Moving_Tile" type="MeshInstance3D" node_paths=PackedStringArray("point_a", "point_b")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_jynmh"]
+size = Vector3(10, 2, 10)
+
+[node name="Moving_Tile" type="MeshInstance3D"]
 mesh = SubResource("ArrayMesh_uf1b8")
 skeleton = NodePath("")
 script = ExtResource("3_um4ru")
-point_a = NodePath("")
-point_b = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="AnimatableBody3D" parent="."]
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_uabl7")
+sync_to_physics = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_b7aoj")
+shape = SubResource("BoxShape3D_jynmh")

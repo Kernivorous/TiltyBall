@@ -9,6 +9,7 @@ var level_two = load("res://Scenes/level_two.tscn")
 var level_three = load("res://Scenes/level_three.tscn")
 var level_four = load("res://Scenes/level_four.tscn")
 var level_five = load("res://Scenes/level_five.tscn")
+var level_six = load("res://Scenes/level_six.tscn")
 
 var current_level
 var goal
@@ -20,8 +21,10 @@ func _init() -> void:
 	levels.append(level_three)
 	levels.append(level_four)
 	levels.append(level_five)
+	levels.append(level_six)
 	
 func _ready() -> void:
+	Global.current_level = 5
 	ball.player_died.connect(on_player_died)
 	
 	current_level = levels[Global.current_level].instantiate()
