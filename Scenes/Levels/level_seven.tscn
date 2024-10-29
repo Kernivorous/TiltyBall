@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://buw7ihorkkqfg"]
 
-[ext_resource type="MeshLibrary" uid="uid://dtug0w2prjb4" path="res://mesh_library.tres" id="1_aqnxv"]
-[ext_resource type="Script" path="res://Scripts/level.gd" id="2_m6jsl"]
-[ext_resource type="PackedScene" uid="uid://bpt4yh46v4xmo" path="res://Scenes/spike_pit.tscn" id="3_3bs7m"]
-[ext_resource type="PackedScene" uid="uid://c1bm858setm4x" path="res://Scenes/moving_tile.tscn" id="4_5v4bd"]
-[ext_resource type="PackedScene" uid="uid://b4hhr0bwoirrc" path="res://Scenes/hole_tile.tscn" id="5_nwvw8"]
-[ext_resource type="PackedScene" uid="uid://cve67ycj1qnor" path="res://Scenes/wall_tile.tscn" id="6_m24lg"]
+[ext_resource type="MeshLibrary" uid="uid://dtug0w2prjb4" path="res://mesh_library.tres" id="1_tqofk"]
+[ext_resource type="Script" path="res://Scripts/level.gd" id="2_3askk"]
+[ext_resource type="PackedScene" uid="uid://b4hhr0bwoirrc" path="res://Scenes/hole_tile.tscn" id="3_7r0k1"]
+[ext_resource type="PackedScene" uid="uid://c1bm858setm4x" path="res://Scenes/moving_tile.tscn" id="4_oi4sr"]
+[ext_resource type="PackedScene" uid="uid://bpt4yh46v4xmo" path="res://Scenes/spike_pit.tscn" id="4_uluca"]
+[ext_resource type="PackedScene" uid="uid://cve67ycj1qnor" path="res://Scenes/wall_tile.tscn" id="5_8ot5i"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0lc5e"]
 friction = 0.0
@@ -14,12 +14,12 @@ friction = 0.0
 size = Vector3(60, 1, 60)
 
 [node name="GridMap" type="GridMap" node_paths=PackedStringArray("goal", "player_start")]
-mesh_library = ExtResource("1_aqnxv")
+mesh_library = ExtResource("1_tqofk")
 cell_size = Vector3(10, 2, 10)
 data = {
 "cells": PackedInt32Array(1, 65533, 0, 2, 65533, 0, 65533, 65535, 0, 1, 65534, 0, 65534, 65535, 0, 0, 1, 0, 65535, 1, 0, 65534, 1, 0, 65537, 65534, 1441794, 65535, 2, 1441797, 0, 2, 1441797, 1, 2, 1441797, 65534, 2, 1441792)
 }
-script = ExtResource("2_m6jsl")
+script = ExtResource("2_3askk")
 goal = NodePath("Hole_Tile ")
 player_start = NodePath("PlayerStart")
 metadata/_editor_floor_ = Vector3(0, 1, 0)
@@ -27,19 +27,19 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 [node name="PlayerStart" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 3, -4.626)
 
-[node name="Spike Pit " parent="." instance=ExtResource("3_3bs7m")]
+[node name="Spike Pit " parent="." instance=ExtResource("4_uluca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1, 25)
 
-[node name="Spike Pit 2" parent="." instance=ExtResource("3_3bs7m")]
+[node name="Spike Pit 2" parent="." instance=ExtResource("4_uluca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1, 15)
 
-[node name="Spike Pit 3" parent="." instance=ExtResource("3_3bs7m")]
+[node name="Spike Pit 3" parent="." instance=ExtResource("4_uluca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -5)
 
-[node name="Spike Pit 4" parent="." instance=ExtResource("3_3bs7m")]
+[node name="Spike Pit 4" parent="." instance=ExtResource("4_uluca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, -15)
 
-[node name="Moving_Tile" parent="." node_paths=PackedStringArray("point_a", "point_b") instance=ExtResource("4_5v4bd")]
+[node name="Moving_Tile" parent="." node_paths=PackedStringArray("point_a", "point_b") instance=ExtResource("4_oi4sr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1, -15)
 point_a = NodePath("PointA")
 point_b = NodePath("PointB")
@@ -49,7 +49,7 @@ point_b = NodePath("PointB")
 [node name="PointB" type="Node3D" parent="Moving_Tile"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
 
-[node name="Moving_Tile2" parent="." node_paths=PackedStringArray("point_a", "point_b") instance=ExtResource("4_5v4bd")]
+[node name="Moving_Tile2" parent="." node_paths=PackedStringArray("point_a", "point_b") instance=ExtResource("4_oi4sr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -25)
 point_a = NodePath("PointA")
 point_b = NodePath("PointB")
@@ -59,55 +59,55 @@ point_b = NodePath("PointB")
 [node name="PointB" type="Node3D" parent="Moving_Tile2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
 
-[node name="Hole_Tile " parent="." instance=ExtResource("5_nwvw8")]
+[node name="Hole_Tile " parent="." instance=ExtResource("3_7r0k1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, 25)
 
 [node name="Walls" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
-[node name="Wall_Tile " parent="Walls" instance=ExtResource("6_m24lg")]
+[node name="Wall_Tile " parent="Walls" instance=ExtResource("5_8ot5i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 5, -5)
 
-[node name="Wall_Tile 2" parent="Walls" instance=ExtResource("6_m24lg")]
+[node name="Wall_Tile 2" parent="Walls" instance=ExtResource("5_8ot5i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, 15)
 
-[node name="Wall_Tile 3" parent="Walls" instance=ExtResource("6_m24lg")]
+[node name="Wall_Tile 3" parent="Walls" instance=ExtResource("5_8ot5i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 5, 25)
 
-[node name="Wall_Tile 4" parent="Walls" instance=ExtResource("6_m24lg")]
+[node name="Wall_Tile 4" parent="Walls" instance=ExtResource("5_8ot5i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, -34, 5, 20)
 
-[node name="Wall_Tile 5" parent="Walls" instance=ExtResource("6_m24lg")]
+[node name="Wall_Tile 5" parent="Walls" instance=ExtResource("5_8ot5i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 25, 5, -20)
 
-[node name="Wall_Tile 6" parent="Walls" instance=ExtResource("6_m24lg")]
+[node name="Wall_Tile 6" parent="Walls" instance=ExtResource("5_8ot5i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 5, -5)
 
-[node name="Wall_Tile 7" parent="Walls" instance=ExtResource("6_m24lg")]
+[node name="Wall_Tile 7" parent="Walls" instance=ExtResource("5_8ot5i")]
 transform = Transform3D(-4.37114e-08, 0, 2.8, 0, 1, 0, -1, 0, -1.22392e-07, -15, 5, 4)
 
-[node name="Wall_Tile 8" parent="Walls" instance=ExtResource("6_m24lg")]
+[node name="Wall_Tile 8" parent="Walls" instance=ExtResource("5_8ot5i")]
 transform = Transform3D(-4.37114e-08, 0, 0.9, 0, 1, 0, -1, 0, -3.93403e-08, -24.5, 5, -5)
 
-[node name="Wall_Tile 9" parent="Walls" instance=ExtResource("6_m24lg")]
+[node name="Wall_Tile 9" parent="Walls" instance=ExtResource("5_8ot5i")]
 transform = Transform3D(-4.37114e-08, 0, 0.9, 0, 1, 0, -1, 0, -3.93403e-08, -5.5, 5, -5)
 
-[node name="Wall_Tile 10" parent="Walls" instance=ExtResource("6_m24lg")]
+[node name="Wall_Tile 10" parent="Walls" instance=ExtResource("5_8ot5i")]
 transform = Transform3D(-4.37114e-08, 0, 1.9, 0, 1, 0, -1, 0, -8.30516e-08, 19.5, 5, -6)
 
-[node name="Wall_Tile 11" parent="Walls" instance=ExtResource("6_m24lg")]
+[node name="Wall_Tile 11" parent="Walls" instance=ExtResource("5_8ot5i")]
 transform = Transform3D(-4.37114e-08, 0, 0.9, 0, 1, 0, -1, 0, -3.93403e-08, 24.5, 5, -25)
 
-[node name="Wall_Tile 12" parent="Walls" instance=ExtResource("6_m24lg")]
+[node name="Wall_Tile 12" parent="Walls" instance=ExtResource("5_8ot5i")]
 transform = Transform3D(-4.37114e-08, 0, 0.9, 0, 1, 0, -1, 0, -3.93403e-08, 24.5, 5, 25)
 
-[node name="Wall_Tile 13" parent="Walls" instance=ExtResource("6_m24lg")]
+[node name="Wall_Tile 13" parent="Walls" instance=ExtResource("5_8ot5i")]
 transform = Transform3D(-4.37114e-08, 0, 0.9, 0, 1, 0, -1, 0, -3.93403e-08, 24.5, 5, 34)
 
-[node name="Wall_Tile 14" parent="Walls" instance=ExtResource("6_m24lg")]
+[node name="Wall_Tile 14" parent="Walls" instance=ExtResource("5_8ot5i")]
 transform = Transform3D(-4.37114e-08, 0, 1.9, 0, 1, 0, -1, 0, -8.30516e-08, -19.5, 5, 34)
 
-[node name="Wall_Tile 15" parent="Walls" instance=ExtResource("6_m24lg")]
+[node name="Wall_Tile 15" parent="Walls" instance=ExtResource("5_8ot5i")]
 transform = Transform3D(-4.37114e-08, 0, 2.9, 0, 1, 0, -1, 0, -1.26763e-07, -14.5, 5, 15)
 
 [node name="Ceiling" type="StaticBody3D" parent="."]

@@ -5,10 +5,10 @@
 [ext_resource type="Script" path="res://Scripts/level.gd" id="2_jwnxd"]
 [ext_resource type="PackedScene" uid="uid://cve67ycj1qnor" path="res://Scenes/wall_tile.tscn" id="3_qieln"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_73tlg"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sbv7u"]
 friction = 0.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8u3cc"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_bb0ul"]
 size = Vector3(60, 1, 60)
 
 [node name="GridMap" type="GridMap" node_paths=PackedStringArray("goal", "player_start")]
@@ -65,9 +65,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.25, 2.75, 14.1866)
 
 [node name="Ceiling" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75, 0)
-collision_layer = 0
-collision_mask = 0
-physics_material_override = SubResource("PhysicsMaterial_73tlg")
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_sbv7u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling"]
-shape = SubResource("BoxShape3D_8u3cc")
+shape = SubResource("BoxShape3D_bb0ul")

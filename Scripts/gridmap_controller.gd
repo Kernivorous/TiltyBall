@@ -10,6 +10,8 @@ var tilt_input : float
 var mouse_rotation : Vector3
 var floor_rotation: Vector3
 
+var active : bool = false
+
 func _unhandled_input(event: InputEvent) -> void:
 	var mouse_input = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
 	
@@ -26,7 +28,7 @@ func update_floor(delta):
 	mouse_rotation.z = clamp(mouse_rotation.z, -ROTATION_LIMIT, ROTATION_LIMIT)
 	
 	floor_rotation = Vector3(-mouse_rotation.x, 0, mouse_rotation.z)
-	#global_transform.basis = Basis.from_euler(floor_rotation)	
+
 	rotation = floor_rotation
 	
 	rotation_input = 0.0
@@ -39,9 +41,15 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	update_floor(delta)
+	if active:
+		update_floor(delta)
 	
 
 func reset_rotation() -> void:
 	mouse_rotation.x = 0.0
 	mouse_rotation.z = 0.0
+	
+	rotation_input = 0.0
+	tilt_input = 0.0
+	
+	rotation = Vector3.ZERO

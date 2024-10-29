@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6v30wiil2r5i"]
+[gd_scene load_steps=11 format=3 uid="uid://b6v30wiil2r5i"]
 
 [ext_resource type="PackedScene" uid="uid://uylm2y6b8vay" path="res://Scenes/ball.tscn" id="1_b37pn"]
 [ext_resource type="Script" path="res://Scripts/gridmap_controller.gd" id="2_0bvne"]
@@ -6,10 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://b0j5uxbnlo5d6" path="res://Assets/kloppenheim_06_puresky_4k.hdr" id="4_chkxj"]
 [ext_resource type="Script" path="res://Scripts/death_box.gd" id="5_qy67b"]
 [ext_resource type="AudioStream" uid="uid://5j2umr3fnmij" path="res://Cosy Synth.mp3" id="6_skww6"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bj5xw"]
-metallic = 1.0
-roughness = 0.0
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xwcko"]
 panorama = ExtResource("4_chkxj")
@@ -47,7 +43,7 @@ size = Vector3(100, 5, 100)
 [node name="World" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707106, 0, -0.707106, 0.707106, 0, 60, 48.085)
+transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707106, 0, -0.707106, 0.707106, 0, 60, 48)
 fov = 70.0
 size = 83.365
 near = 0.003
@@ -62,12 +58,6 @@ directional_shadow_fade_start = 0.5
 directional_shadow_pancake_size = 1.6
 
 [node name="Ball" parent="." instance=ExtResource("1_b37pn")]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -85.9855, 0)
-visible = false
-size = Vector3(50, 100, 50)
-material = SubResource("StandardMaterial3D_bj5xw")
 
 [node name="GridMapHolder" type="Node3D" parent="." node_paths=PackedStringArray("gridmap_controller", "ball")]
 script = ExtResource("2_83d3g")
@@ -90,7 +80,6 @@ shape = SubResource("BoxShape3D_odcwk")
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.98665, 0)
-update_mode = 1
 size = Vector3(100, 46.8538, 100)
 enable_shadows = true
 cull_mask = 1048573

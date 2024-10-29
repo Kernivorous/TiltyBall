@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccgisbnm6fgu2"]
+
+[ext_resource type="MeshLibrary" uid="uid://dtug0w2prjb4" path="res://mesh_library.tres" id="1_tqofk"]
+[ext_resource type="Script" path="res://Scripts/level.gd" id="2_3askk"]
+[ext_resource type="PackedScene" uid="uid://b4hhr0bwoirrc" path="res://Scenes/hole_tile.tscn" id="3_7r0k1"]
+[ext_resource type="PackedScene" uid="uid://bpt4yh46v4xmo" path="res://Scenes/spike_pit.tscn" id="4_uluca"]
+[ext_resource type="PackedScene" uid="uid://cve67ycj1qnor" path="res://Scenes/wall_tile.tscn" id="5_86cki"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sfwoj"]
+friction = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6n3qr"]
+size = Vector3(60, 1, 60)
+
+[node name="GridMap" type="GridMap" node_paths=PackedStringArray("goal", "player_start")]
+mesh_library = ExtResource("1_tqofk")
+cell_size = Vector3(10, 2, 10)
+data = {
+"cells": PackedInt32Array(65533, 65533, 0, 65533, 65534, 0, 65533, 65535, 0, 65533, 1, 0, 65533, 2, 0, 65534, 2, 0, 65535, 65533, 0, 65534, 65533, 0, 0, 65533, 0, 1, 65533, 0, 1, 65535, 0, 0, 65535, 0, 65535, 65535, 0, 65534, 65535, 0, 65534, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 65535, 1, 0, 65534, 1, 0, 65533, 0, 0)
+}
+script = ExtResource("2_3askk")
+goal = NodePath("Hole_Tile ")
+player_start = NodePath("PlayerStart")
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="Spikes" type="Node3D" parent="."]
+
+[node name="Spike Pit " parent="Spikes" instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 25)
+
+[node name="Spike Pit 2" parent="Spikes" instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 25)
+
+[node name="Spike Pit 3" parent="Spikes" instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, 25)
+
+[node name="Spike Pit 4" parent="Spikes" instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, 25)
+
+[node name="Spike Pit 5" parent="Spikes" instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, 15)
+
+[node name="Spike Pit 6" parent="Spikes" instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, 5)
+
+[node name="Spike Pit 7" parent="Spikes" instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, -5)
+
+[node name="Spike Pit 8" parent="Spikes" instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, -15)
+
+[node name="Spike Pit 9" parent="Spikes" instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, -15)
+
+[node name="Spike Pit 10" parent="Spikes" instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -15)
+
+[node name="Spike Pit 11" parent="Spikes" instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -15)
+
+[node name="Spike Pit 12" parent="Spikes" instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -15)
+
+[node name="Spike Pit 13" parent="Spikes" instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 1, -15)
+
+[node name="Spike Pit 14" parent="Spikes" instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 5)
+
+[node name="Spike Pit 15" parent="Spikes" instance=ExtResource("4_uluca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 5)
+
+[node name="Hole_Tile " parent="." instance=ExtResource("3_7r0k1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, -25)
+
+[node name="PlayerStart" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5, 2.75, 25.75)
+
+[node name="Walls" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="Wall_Tile " parent="Walls" instance=ExtResource("5_86cki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 5, 5)
+
+[node name="Wall_Tile 2" parent="Walls" instance=ExtResource("5_86cki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, -34, 5, 20)
+
+[node name="Wall_Tile 3" parent="Walls" instance=ExtResource("5_86cki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9, -15, 5, 24.5)
+
+[node name="Wall_Tile 4" parent="Walls" instance=ExtResource("5_86cki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 5, -5)
+
+[node name="Wall_Tile 5" parent="Walls" instance=ExtResource("5_86cki")]
+transform = Transform3D(-4.37114e-08, 0, 1.9, 0, 1, 0, -1, 0, -8.30516e-08, -19.5, 5, 15)
+
+[node name="Wall_Tile 6" parent="Walls" instance=ExtResource("5_86cki")]
+transform = Transform3D(-4.37114e-08, 0, 5.9, 0, 1, 0, -1, 0, -2.57897e-07, 0.5, 5, 34)
+
+[node name="Wall_Tile 7" parent="Walls" instance=ExtResource("5_86cki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5.9, 25, 5, -0.5)
+
+[node name="Ceiling" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75, 0)
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_sfwoj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling"]
+shape = SubResource("BoxShape3D_6n3qr")
